@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Shadows+Into+Light&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+}
