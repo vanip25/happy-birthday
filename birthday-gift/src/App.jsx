@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { memories } from "./data/memories";
 import Welcome from "./Welcome";
-import MemoryCard from "./Memorycard";
+import MemoryCard from "./MemoryCard";
 import QuizCard from "./QuizCard";
 import Progress from "./Progress";
 import FinalWish from "./FinalWish";
