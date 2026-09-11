@@ -11,11 +11,11 @@ function Welcome({ onStart }) {
 
         <div className="welcome-heart">♡</div>
 
-        <h1>
-          Hey,
+        <h2>
+          My Dear,
           <br />
           Birthday Boy
-        </h1>
+        </h2>
 
         <p className="welcome-subtitle">
           Before you make another birthday wish...

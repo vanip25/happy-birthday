@@ -91,27 +91,14 @@ button {
   animation: pageAppear 1s ease;
 }
 
-
-/* =========================================================
-   WELCOME CARD
-========================================================= */
-
 .welcome-card {
-
   position: relative;
-
   z-index: 5;
-
   width: min(570px, 100%);
-
-  padding: 55px 45px;
-
+  padding: 20px;
   background: rgba(255, 255, 255, 0.62);
-
   border: 1px solid rgba(255, 255, 255, 0.9);
-
   border-radius: 40px;
-
   box-shadow:
     0 30px 90px rgba(89, 76, 80, 0.12);
 
@@ -183,13 +170,10 @@ button {
    WELCOME HEADING
 ========================================================= */
 
-.welcome-card h1 {
-
+.welcome-card h2 {
+font-size: 55px !important;
   margin: 0;
-
-  font-family: "Playfair Display", serif;
-
-  font-weight: 400;
+   font-weight: 400;
 
   font-size: clamp(55px, 10vw, 82px);
 
@@ -327,8 +311,7 @@ button {
 
   font-size: 16px;
 
-  transform: rotate(-2deg);
-}
+ }
 
 
 /* =========================================================
@@ -685,9 +668,9 @@ button {
 .photo-frame {
   position: relative;
 
-  width: 100%;
+  width: 80%;
 
-  min-height: 390px;
+  /* min-height: 390px; */
 
   padding: 12px;
 
@@ -706,13 +689,9 @@ button {
 }
 
 .photo-frame img {
-  width: 100%;
+  width: 95%;
   height: 100%;
-
-  min-height: 366px;
-
   object-fit: cover;
-
   display: block;
 }
 

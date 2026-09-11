@@ -1,0 +1,943 @@
+/* =====================================================
+   FINAL BIRTHDAY REVEAL
+===================================================== */
+
+.final-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 60px 20px;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(255, 210, 225, 0.65),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(225, 213, 250, 0.65),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(255, 220, 198, 0.6),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #fff9f7 0%,
+      #fff4f7 45%,
+      #f8f2fc 100%
+    );
+
+  animation: finalPageAppear 1.2s ease forwards;
+}
+
+
+/* =====================================================
+   BACKGROUND GLOW
+===================================================== */
+
+.final-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(5px);
+}
+
+.glow-one {
+  width: 300px;
+  height: 300px;
+  top: -120px;
+  left: -100px;
+  background: rgba(255, 180, 205, 0.25);
+  animation: glowFloat 7s ease-in-out infinite;
+}
+
+.glow-two {
+  width: 350px;
+  height: 350px;
+  right: -150px;
+  bottom: -120px;
+  background: rgba(205, 185, 240, 0.25);
+  animation: glowFloat 8s ease-in-out infinite reverse;
+}
+
+.glow-three {
+  width: 180px;
+  height: 180px;
+  top: 45%;
+  left: 48%;
+  background: rgba(255, 220, 190, 0.18);
+  filter: blur(30px);
+}
+
+
+/* =====================================================
+   FALLING DECORATIONS
+===================================================== */
+
+.falling-decorations {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.falling-item {
+  position: absolute;
+  top: -80px;
+  display: block;
+
+  animation-name: falling;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  user-select: none;
+}
+
+
+/* Flowers */
+
+.flower {
+  font-size: 25px;
+  filter: drop-shadow(0 5px 8px rgba(150, 100, 120, 0.12));
+}
+
+
+/* Hearts */
+
+.heart {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  color: rgba(207, 111, 145, 0.75);
+  text-shadow: 0 5px 15px rgba(207, 111, 145, 0.15);
+}
+
+
+/* Stars */
+
+.star {
+  color: rgba(191, 155, 215, 0.8);
+  font-size: 20px;
+  text-shadow: 0 0 15px rgba(200, 170, 220, 0.8);
+}
+
+
+/* Individual positions */
+
+.fall-1 {
+  left: 5%;
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+
+.fall-2 {
+  left: 14%;
+  animation-duration: 11s;
+  animation-delay: 2s;
+}
+
+.fall-3 {
+  left: 23%;
+  animation-duration: 9s;
+  animation-delay: 4s;
+}
+
+.fall-4 {
+  left: 32%;
+  animation-duration: 7s;
+  animation-delay: 1s;
+}
+
+.fall-5 {
+  left: 41%;
+  animation-duration: 12s;
+  animation-delay: 3s;
+}
+
+.fall-6 {
+  left: 49%;
+  animation-duration: 8s;
+  animation-delay: 5s;
+}
+
+.fall-7 {
+  left: 57%;
+  animation-duration: 10s;
+  animation-delay: 1.5s;
+}
+
+.fall-8 {
+  left: 65%;
+  animation-duration: 9s;
+  animation-delay: 4s;
+}
+
+.fall-9 {
+  left: 73%;
+  animation-duration: 12s;
+  animation-delay: 2.5s;
+}
+
+.fall-10 {
+  left: 80%;
+  animation-duration: 8s;
+  animation-delay: 5s;
+}
+
+.fall-11 {
+  left: 87%;
+  animation-duration: 11s;
+  animation-delay: 1s;
+}
+
+.fall-12 {
+  left: 93%;
+  animation-duration: 9s;
+  animation-delay: 3s;
+}
+
+.fall-13 {
+  left: 18%;
+  animation-duration: 13s;
+  animation-delay: 6s;
+}
+
+.fall-14 {
+  left: 68%;
+  animation-duration: 14s;
+  animation-delay: 7s;
+}
+
+.fall-15 {
+  left: 37%;
+  animation-duration: 10s;
+  animation-delay: 7s;
+}
+
+.fall-16 {
+  left: 91%;
+  animation-duration: 13s;
+  animation-delay: 8s;
+}
+
+
+/* =====================================================
+   SPARKLE FIELD
+===================================================== */
+
+.sparkle-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sparkle-field span {
+  position: absolute;
+  color: rgba(190, 151, 214, 0.55);
+  font-size: 18px;
+
+  animation: sparkle 2.5s ease-in-out infinite;
+}
+
+.sparkle-field span:nth-child(1) {
+  top: 12%;
+  left: 18%;
+}
+
+.sparkle-field span:nth-child(2) {
+  top: 22%;
+  right: 12%;
+  animation-delay: 0.8s;
+}
+
+.sparkle-field span:nth-child(3) {
+  top: 42%;
+  left: 7%;
+  animation-delay: 1.4s;
+}
+
+.sparkle-field span:nth-child(4) {
+  top: 60%;
+  right: 8%;
+  animation-delay: 0.4s;
+}
+
+.sparkle-field span:nth-child(5) {
+  bottom: 20%;
+  left: 16%;
+  animation-delay: 1.2s;
+}
+
+.sparkle-field span:nth-child(6) {
+  bottom: 12%;
+  right: 25%;
+  animation-delay: 0.7s;
+}
+
+.sparkle-field span:nth-child(7) {
+  top: 8%;
+  right: 40%;
+  animation-delay: 1.8s;
+}
+
+.sparkle-field span:nth-child(8) {
+  bottom: 30%;
+  left: 42%;
+  animation-delay: 2s;
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.final-card {
+  position: relative;
+  z-index: 10;
+
+  width: min(650px, 100%);
+
+  padding: 60px 65px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 248, 250, 0.78)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 42px;
+
+  box-shadow:
+    0 35px 100px rgba(120, 91, 105, 0.14),
+    0 8px 30px rgba(200, 150, 170, 0.08);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  animation: cardReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =====================================================
+   FLOWERS AROUND CARD
+===================================================== */
+
+.card-decoration {
+  position: absolute;
+  font-size: 30px;
+  opacity: 0.75;
+
+  animation: decorationFloat 4s ease-in-out infinite;
+}
+
+.top-left {
+  top: -18px;
+  left: 30px;
+}
+
+.top-right {
+  top: -12px;
+  right: 35px;
+  animation-delay: 1s;
+}
+
+.bottom-left {
+  bottom: -15px;
+  left: 40px;
+  animation-delay: 2s;
+}
+
+.bottom-right {
+  bottom: -12px;
+  right: 35px;
+  animation-delay: 1.5s;
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.final-small {
+  margin: 0 0 15px;
+
+  color: #b497a0;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.final-eyebrow {
+  margin: 0 0 18px;
+
+  color: #b18b99;
+
+  font-family: "Shadows Into Light", cursive;
+  font-size: 17px;
+
+  transform: rotate(-2deg);
+}
+
+
+/* =====================================================
+   HEART
+===================================================== */
+
+.final-heart {
+  width: 76px;
+  height: 76px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe9f0,
+      #eee5f8
+    );
+
+  color: #c77f98;
+
+  font-family: "Playfair Display", serif;
+  font-size: 39px;
+
+  box-shadow:
+    0 15px 35px rgba(199, 127, 150, 0.16),
+    inset 0 0 20px rgba(255, 255, 255, 0.8);
+
+  animation: heartBeat 2.5s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.final-card h1 {
+  margin: 0;
+
+  color: #5b4c52;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 400;
+
+  line-height: 0.98;
+
+  letter-spacing: -2px;
+}
+
+.final-card h1 span {
+  color: #bd7890;
+  font-style: italic;
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.final-divider {
+  position: relative;
+
+  width: 150px;
+  height: 25px;
+
+  margin: 28px auto;
+}
+
+.final-divider::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #e5cbd4,
+    transparent
+  );
+}
+
+.final-divider span {
+  position: relative;
+
+  display: inline-flex;
+
+  padding: 0 15px;
+
+  background: #fffafa;
+
+  color: #c77f98;
+
+  font-size: 17px;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.final-message {
+  margin: 0 auto 20px;
+
+  max-width: 510px;
+
+  color: #7e7075;
+
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+
+/* =====================================================
+   SIGNATURE
+===================================================== */
+
+.final-signature {
+  margin-top: 32px;
+
+  color: #a18e94;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.final-signature span {
+  color: #bd7890;
+
+  font-family: "Shadows Into Light", cursive;
+
+  font-size: 23px;
+}
+
+
+/* =====================================================
+   CAKE
+===================================================== */
+
+.cake-wrapper {
+  position: relative;
+
+  width: 100px;
+  height: 100px;
+
+  margin: 15px auto 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cake-glow {
+  position: absolute;
+
+  width: 75px;
+  height: 75px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 196, 210, 0.35);
+
+  filter: blur(18px);
+
+  animation: cakeGlow 2s ease-in-out infinite;
+}
+
+.birthday-cake {
+  position: relative;
+  z-index: 2;
+
+  font-size: 55px;
+
+  animation: cakeBounce 3s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.final-footer {
+  margin: 5px 0 0;
+
+  color: #9e858e;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 15px;
+  font-style: italic;
+}
+
+.tiny-hearts {
+  margin-top: 15px;
+
+  color: #d39aaa;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   BOTTOM FLOWERS
+===================================================== */
+
+.bottom-petals {
+  position: absolute;
+
+  bottom: 12px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 22px;
+
+  z-index: 3;
+
+  opacity: 0.75;
+}
+
+.bottom-petals span {
+  font-size: 22px;
+
+  animation: bottomFlowerFloat 3s ease-in-out infinite;
+}
+
+.bottom-petals span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.bottom-petals span:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.bottom-petals span:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.bottom-petals span:nth-child(5) {
+  animation-delay: 2s;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes finalPageAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+@keyframes falling {
+  0% {
+    transform:
+      translateY(-100px)
+      translateX(0)
+      rotate(0deg);
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform:
+      translateY(55vh)
+      translateX(45px)
+      rotate(180deg);
+  }
+
+  100% {
+    transform:
+      translateY(115vh)
+      translateX(-35px)
+      rotate(360deg);
+
+    opacity: 0.1;
+  }
+}
+
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.7) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.4) rotate(25deg);
+  }
+}
+
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.08);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.05);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+}
+
+
+@keyframes decorationFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(7deg);
+  }
+}
+
+
+@keyframes cakeBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(3deg);
+  }
+}
+
+
+@keyframes cakeGlow {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+
+@keyframes glowFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30px, -25px);
+  }
+}
+
+
+@keyframes bottomFlowerFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(8deg);
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .final-page {
+    padding: 40px 15px;
+    align-items: center;
+  }
+
+  .final-card {
+    padding: 45px 25px;
+    border-radius: 32px;
+  }
+
+  .final-card h1 {
+    font-size: clamp(43px, 13vw, 60px);
+    letter-spacing: -1.5px;
+  }
+
+  .final-heart {
+    width: 65px;
+    height: 65px;
+    font-size: 32px;
+  }
+
+  .final-message {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .card-decoration {
+    font-size: 24px;
+  }
+
+  .bottom-petals {
+    gap: 12px;
+  }
+
+  .bottom-petals span {
+    font-size: 18px;
+  }
+
+  .falling-item.flower {
+    font-size: 19px;
+  }
+
+  .falling-item.heart {
+    font-size: 23px;
+  }
+
+  .falling-item.star {
+    font-size: 15px;
+  }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 420px) {
+
+  .final-page {
+    padding: 25px 12px;
+  }
+
+  .final-card {
+    padding: 38px 20px;
+    border-radius: 28px;
+  }
+
+  .final-small {
+    letter-spacing: 3px;
+  }
+
+  .final-eyebrow {
+    font-size: 15px;
+  }
+
+  .final-card h1 {
+    font-size: 43px;
+  }
+
+  .final-divider {
+    margin: 22px auto;
+  }
+
+  .final-message {
+    font-size: 12.5px;
+  }
+
+  .final-signature {
+    margin-top: 25px;
+  }
+
+  .birthday-cake {
+    font-size: 47px;
+  }
+
+  .bottom-petals {
+    display: none;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .falling-item,
+  .sparkle-field span,
+  .final-heart,
+  .birthday-cake,
+  .cake-glow,
+  .card-decoration,
+  .bottom-petals span,
+  .final-card {
+    animation: none;
+  }
+}

@@ -1,14 +1,12 @@
-import { useRef, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 import { memories } from "./data/memories";
-
 import Welcome from "./Welcome";
 import MemoryCard from "./Memorycard";
 import QuizCard from "./QuizCard";
 import Progress from "./Progress";
 import FinalWish from "./FinalWish";
-
 import perfectSong from "./music/perfect.mp3";
+import happyBirthdaySong from "./music/happy-birthday.mp3";
 
 import "./App.css";
 
@@ -20,13 +18,11 @@ function App() {
   const [playing, setPlaying] = useState(false);
 
   const audioRef = useRef(null);
+  const birthdayAudioRef = useRef(null);
 
   const memory = memories[currentMemory];
 
-  // --------------------------------
-  // START STORY + MUSIC
-  // --------------------------------
-
+  // Start Perfect when he enters the experience
   const handleStart = async () => {
     setStarted(true);
 
@@ -40,18 +36,12 @@ function App() {
     }
   };
 
-  // --------------------------------
-  // MEMORY → QUIZ
-  // --------------------------------
-
+  // Move from memory → quiz
   const handleMemoryContinue = () => {
     setShowQuiz(true);
   };
 
-  // --------------------------------
-  // QUIZ → NEXT MEMORY
-  // --------------------------------
-
+  // Correct quiz answer
   const handleCorrectAnswer = () => {
     if (currentMemory === memories.length - 1) {
       setFinished(true);
@@ -59,25 +49,47 @@ function App() {
     }
 
     setCurrentMemory((prev) => prev + 1);
-
     setShowQuiz(false);
   };
 
-  // --------------------------------
-  // MUSIC CONTROL
-  // --------------------------------
+  // Switch music when final birthday page appears
+  useEffect(() => {
+    if (!finished) return;
 
+    const switchToBirthdaySong = async () => {
+      // Stop Perfect
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+
+      // Start Happy Birthday
+      if (birthdayAudioRef.current) {
+        try {
+          birthdayAudioRef.current.currentTime = 0;
+          await birthdayAudioRef.current.play();
+          setPlaying(true);
+        } catch (error) {
+          console.error("Happy Birthday music could not start:", error);
+        }
+      }
+    };
+
+    switchToBirthdaySong();
+  }, [finished]);
+
+  // Music button
   const toggleMusic = async () => {
-    if (!audioRef.current) return;
+    const activeAudio = finished ? birthdayAudioRef.current : audioRef.current;
+
+    if (!activeAudio) return;
 
     try {
       if (playing) {
-        audioRef.current.pause();
-
+        activeAudio.pause();
         setPlaying(false);
       } else {
-        await audioRef.current.play();
-
+        await activeAudio.play();
         setPlaying(true);
       }
     } catch (error) {
@@ -87,21 +99,13 @@ function App() {
 
   return (
     <>
-      {/* --------------------------------
-          ONE AUDIO ELEMENT FOR ENTIRE APP
-      -------------------------------- */}
-
+      {/* Main song */}
       <audio ref={audioRef} src={perfectSong} loop preload="auto" />
 
-      {/* --------------------------------
-          WELCOME
-      -------------------------------- */}
+      {/* Final birthday song */}
+      <audio ref={birthdayAudioRef} src={happyBirthdaySong} preload="auto" />
 
       {!started && <Welcome onStart={handleStart} />}
-
-      {/* --------------------------------
-          MEMORY / QUIZ
-      -------------------------------- */}
 
       {started && !finished && (
         <main className="app">
@@ -123,15 +127,7 @@ function App() {
         </main>
       )}
 
-      {/* --------------------------------
-          FINAL PAGE
-      -------------------------------- */}
-
       {finished && <FinalWish />}
-
-      {/* --------------------------------
-          MUSIC BUTTON
-      -------------------------------- */}
 
       {started && (
         <button
@@ -142,9 +138,15 @@ function App() {
           <span>{playing ? "♫" : "♪"}</span>
 
           <div>
-            <small>{playing ? "playing now" : "music paused"}</small>
+            <small>
+              {playing
+                ? finished
+                  ? "birthday song"
+                  : "playing now"
+                : "music paused"}
+            </small>
 
-            <strong>Perfect ♡</strong>
+            <strong>{finished ? "Happy Birthday ♡" : "Perfect ♡"}</strong>
           </div>
         </button>
       )}
